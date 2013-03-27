@@ -6,6 +6,7 @@
 #include <sys/time.h>
 #include <cassert>
 #include "locked.h"
+#include "spinlocked.h"
 #include "lockfree.h"
 
 struct LockedElement
@@ -109,7 +110,8 @@ int main()
     {
         double lockFreeTime = Test<LockFreeStack, LockFreeElement>(i);
         double lockedTime = Test<LockedStack<LockedElement>, LockedElement>(i);
-        printf("%d threads, LockFree: %d/sec, Locked: %d/sec\n", i, (int)lockFreeTime, (int)lockedTime);
+        double spinLockedTime = Test<SpinLockedStack<LockedElement>, LockedElement>(i);
+        printf("%d threads, LockFree: %d/sec, Locked: %d/sec, SpinLocked: %d/sec\n", i, (int)lockFreeTime, (int)lockedTime, (int)spinLockedTime);
     }
     return 0;
 }
