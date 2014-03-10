@@ -1,5 +1,6 @@
 #include <stack>
 #include "atomic.h"
+#include <unistd.h>
 
 class SpinLock
 {
@@ -8,7 +9,6 @@ public:
     {
         while (true)
         {
-            bool oldValue = false;
             if (!m_locked.test_and_set(boost::memory_order_acquire))
             {
                 return;

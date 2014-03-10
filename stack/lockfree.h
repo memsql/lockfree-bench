@@ -1,5 +1,6 @@
 
 #include "atomic.h"
+#include <unistd.h>
 
 class LockFreeStack
 {

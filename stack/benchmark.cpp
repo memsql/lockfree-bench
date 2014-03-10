@@ -79,8 +79,6 @@ double Test(int nthreads)
         Stack st;
         Element* elements = new Element[num_elements];
         
-        struct timeval starttime, endtime;
-        
         std::thread threads[MAX_THREADS];
         int numOps[MAX_THREADS] = {};
         
